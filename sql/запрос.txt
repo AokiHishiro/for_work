@@ -1,0 +1,3 @@
+SELECT objects.id, users.objects_ID
+FROM objects LEFT JOIN users 
+ON objects.id = users.objects_ID;
