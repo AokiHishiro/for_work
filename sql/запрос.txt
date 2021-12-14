@@ -1,3 +1,3 @@
 SELECT us.* FROM users as us
-LEFT JOIN objects as ob
+INNER JOIN objects as ob
 ON ob.id = us.objects_id;
