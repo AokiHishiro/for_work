@@ -8,22 +8,27 @@ final class Item {
 
     function __construct($id) {
         $this->id = $id;
-        require_once '../config/conection.php';//запускается в самом начале(подклбчение прописывается в отдельном файле)
+       // require_once '../config/conection.php';//запускается в самом начале(подклбчение прописывается в отдельном файле)
     }
 
     public function __set($name,$value){//срабатывает, когда мы пытается установить значения вполе класса к которому невозможно получить доступ
-
+   
         if($name == '$id') {
-            echo "nelzya";
-        }elseif(is_string($name =='$name' )||is_int($value=='$status')){
-            $this->$name=$value;}
+            throw new Exception("you can't do that");//Выбрасываем исключение
+        }
         elseif(empty($value)||empty($name)){
-            echo "zapolnite";}
+            throw new Exception("name or status is empty");}
+        elseif(is_string($name =='$name')||is_int($value=='$status')){
+            $this->$name=$value;}
+        
     }
 
 
     public function __get($name){//считывает значение поля к которому нет доступа
-        return $this->$name;
+        if(empty($value)||empty($name)){
+            throw new Exception("name or status is empty");}
+        else{
+        return $this->$name;}
     }
 
 
@@ -43,6 +48,7 @@ final class Item {
     }
 
 }
+$Item = new Item();
 
 
 ?>
