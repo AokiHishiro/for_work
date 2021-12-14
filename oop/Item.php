@@ -25,8 +25,8 @@ final class Item {
 
 
     public function __get($name){//считывает значение поля к которому нет доступа
-        if(empty($value)||empty($name)){
-            throw new Exception("name or status is empty");}
+        if(empty($name)){
+            throw new Exception("name  is empty");}
         else{
         return $this->$name;}
     }
